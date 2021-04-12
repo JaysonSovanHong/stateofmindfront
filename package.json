@@ -2,6 +2,7 @@
     "dependencies": {
         "express": "^4.17.1",
         "path": "^0.12.7",
+        "replace-in-file": "^6.2.0",
         "rowdy-logger": "^1.0.2"
     },
     "scripts": {
@@ -11,7 +12,6 @@
     "name": "frontend",
     "version": "1.0.0",
     "main": "main.js",
-    "devDependencies": {},
     "author": "",
     "license": "ISC",
     "description": "State of Mind This is a traveling app, it’s very simple. A user can create and log in and once they are inside, they are able to pick the state of their emotion that they are feeling, and this will give them ideas on places to travel. They can add and save their favorite ideas to their profile or story board and it will have a comment section where they can edit and delete their comments.",
