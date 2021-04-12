@@ -1,0 +1,27 @@
+.mood {
+    background-color: red;
+}
+
+.city {
+    background-color: blue;
+}
+
+
+/*  */
+
+.section {
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.home {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}

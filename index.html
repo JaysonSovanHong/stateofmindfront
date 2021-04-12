@@ -5,11 +5,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src=""></script>
     <title>State of Mind</title>
 </head>
 
 <body>
+    <!-- <!-- <div class="section">
+
+        <button>Sign Up</button>
+        <button>Login</button>
+
+        <!-- <video autoplay loop muted>
+        <source src="../My Movie.mp4">  -->
+
+
+    </div>
+
+    </video>
+    </div> --> -->
+
+    <div class="signup, hidden">
+        <h2>sign up</h2>
+        <section id="signup-content">
+            <form id="signup">
+
+                <label for="signup-name">Name</label>
+                <input type="text" id="name">
+
+                <label for="signup-email">Email</label>
+                <input type="text" id="email">
+
+                <label for="signup-password">Password</label>
+                <input type="password" id="password">
+
+                <input type="submit" value="Sign Up!">
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <section class="hidden" id="login-content">
+        <form id="login-form">
+            <label for="login-email">Email</label>
+            <input type="text" id="login-email">
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password">
+
+            <input type="submit" value="Log In!">
+            <button id="logOut">Log Out</button>
+        </form>
+    </section>
+
+    <div class="mood, hidden">
+        <form id="vacation-form">
+            <label for="vacation">type of vacation</label><br>
+            <input type="text" id="vacation" value="vacation"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="city">
+            <ul id="cityList"></ul>
+            <p id="cityInfo"></p>
+
+
+        </div>
+    </div>
+
+    <div class="user, hidden">
+        <h2>user page</h2>
+        <form action="/action_page.php" id="usrform">
+            Name: <input type="text" name="usrname">
+            <input type="submit">
+        </form>
+
+        <textarea name="comment" form="usrform">Enter text here...</textarea>
+        <h2>list of save city</h2>
+    </div>
+    <script async defer src="./main.js"></script>
+    <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js "></script>
 
 </body>
+
+
 
 </html>
