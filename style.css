@@ -1,27 +1,124 @@
-.mood {
-    background-color: red;
-}
-
-.city {
-    background-color: blue;
-}
-
-
-/*  */
-
-.section {
+body {
     position: relative;
-    z-index: -1;
-    width: 100%;
-    height: 90vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: 10%;
 }
 
-.home {
+.section {
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+    padding: 10px;
     text-align: center;
-    position: relative;
-    z-index: 1;
+    opacity: .7;
+    margin-top: 5%;
+}
+
+#signup {
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    opacity: .7;
+    margin-top: 5%;
+}
+
+#name,
+#email,
+#password,
+#buttoni {
+    text-align: center;
+    border-top: palegoldenrod;
+    border-bottom: palegoldenrod;
+    background-color: transparent;
+}
+
+#edit {
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    opacity: .7;
+    margin-top: 5%;
+}
+
+#editname,
+#editemail,
+#editbutton {
+    text-align: center;
+    border-top: palegoldenrod;
+    border-bottom: palegoldenrod;
+    background-color: transparent;
+}
+
+#login-form {
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    opacity: .7;
+    margin-top: 5%;
+}
+
+#login-email,
+#login-password,
+button {
+    text-align: center;
+    border-top: palegoldenrod;
+    border-bottom: palegoldenrod;
+    background-color: transparent;
+}
+
+#citymood {
+    width: 300px;
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    opacity: .7;
+    margin-top: 5%;
+}
+
+#vacation-form,
+#vacation,
+#button3 {
+    text-align: center;
+    border-top: palegoldenrod;
+    border-bottom: palegoldenrod;
+    background-color: transparent;
+}
+
+.user {
+    width: 300px;
+    height: auto px;
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    opacity: .7;
+    margin-top: 5%;
+}
+
+#user-city-list,
+#editusername,
+#logOut3 {
+    text-align: center;
+    border-top: palegoldenrod;
+    border-bottom: palegoldenrod;
+    background-color: transparent;
+}
+
+#myVideo {
+    z-index: -1;
+    position: absolute;
+    height: 900px;
+    margin-top: 50px;
+}
+
+.hidden {
+    display: none
 }

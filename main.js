@@ -2,8 +2,43 @@
 //     document.querySelectorAll('div').forEach(d => d.classList.add('hidden'))
 // })
 
+let userCities = null
+const loadAllCity = async() => {
+    try {
+        const loadCity = await axios.post('http://localhost:3001/user/info', {
+            userId: localStorage.getItem('userId')
+        })
+        document.getElementById('user-city-list').innerHTML = ''
+        loadCity.data.userCities.forEach(location => {
+            console.log(location);
+            const p = document.createElement('p')
+            const d = document.createElement('button')
+            d.innerText = 'delete' // add event to delete it axios.delete 
+            p.innerText = `${location.name} ${location.type}`
+            document.getElementById('user-city-list').append(p, d)
+            d.setAttribute('data-id', location.id)
+            d.addEventListener('click', async(event) => {
+                const targetId = event.target.getAttribute('data-id')
+                const res = await axios.delete('http://localhost:3001/cities/delete', {
+                    data: {
+                        userId: localStorage.getItem('userId'),
+                        id: targetId
+                    }
+                })
+                loadAllCity()
+                console.log(res);
+            })
 
 
+        })
+        console.log(loadCity);
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+loadAllCity()
 
 
 document.querySelector('#signup').addEventListener('submit', async(event) => {
@@ -27,6 +62,11 @@ document.querySelector('#signup').addEventListener('submit', async(event) => {
 
         const userId = res.data.newUser.id // with the res you are now going into the object and digging into the payload so data... newuser.. and then the id ( you are trying to get the id)
         localStorage.setItem('userId', userId)
+        alert('Welcome New User')
+        document.getElementById('signup').reset()
+        document.getElementById('signup').classList.add('hidden')
+        document.getElementById('login-content').classList.remove('hidden')
+            // document.querySelector('#helper').classList.add('hidden')
 
     } catch (error) {
         console.log(error)
@@ -55,9 +95,13 @@ document.querySelector('#login-form').addEventListener('submit', async(event) =>
 
         const userId = res.data.user.id
         console.log(res.data);
-
+        alert('You are logged in')
         localStorage.setItem('userId', userId)
-
+        document.getElementById('login-form').reset()
+        document.getElementById('login-form').classList.add('hidden')
+        document.getElementById('userprofile').classList.remove('hidden')
+        document.querySelector('#signup-content').classList.add('hidden')
+        document.querySelector('#citymood').classList.remove('hidden')
     } catch (error) {
         console.log(error)
 
@@ -66,9 +110,13 @@ document.querySelector('#login-form').addEventListener('submit', async(event) =>
 })
 
 
-document.querySelector('#logOut').addEventListener('click', () => {
+document.querySelector('#logOut3').addEventListener('click', () => {
     localStorage.removeItem('userId')
-    alert('logged out')
+    alert('You have logged out')
+    document.getElementById('userprofile').classList.add('hidden')
+    document.querySelector('#citymood').classList.add('hidden')
+
+
 })
 
 document.querySelector('#vacation-form').addEventListener('submit', async(event) => {
@@ -99,8 +147,10 @@ document.querySelector('#vacation-form').addEventListener('submit', async(event)
                 const button = document.createElement('button')
                 button.innerHTML = 'Add City'
                 const buttonLoc = document.getElementById('cityInfo')
+
                 button.classList.add('saveCity')
                 buttonLoc.append(button)
+
 
                 document.querySelector('saveCity')
                 button.addEventListener('click', async(e) => {
@@ -132,17 +182,116 @@ const saveLocation = async(id, type) => {
             userId: user
         })
         console.log(result);
-        document.getElementById('user-city-list').innerHTML = ''
-        result.data.userLocation.forEach(location => {
-            console.log(location);
-            const p = document.createElement('p')
-            const d = document.createElement('button')
-            d.innerText = 'delete' // add event to delete it axios.delete 
-            p.innerText = `${location.name} ${location.type}`
-            document.getElementById('user-city-list').append(p, d)
+        // 
+        // result.data.userLocation.forEach(location => {
+        //     console.log(location);
+        //     const p = document.createElement('p')
+        //     const d = document.createElement('button')
+        //     d.innerText = 'delete' // add event to delete it axios.delete 
+        //     p.innerText = `${location.name} ${location.type}`
+        //     document.getElementById('user-city-list').append(p, d)
+        //     d.setAttribute('data-id', location.id)
+        //     d.addEventListener('click', async(event) => {
+        //         const targetId = event.target.getAttribute('data-id')
+        //         const res = await axios.delete('http://localhost:3001/cities/delete', {
+        //             data: {
+        //                 userId: localStorage.getItem('userId'),
+        //                 id: targetId
+        //             }
+        //         })
+        //         console.log(res);
+        //     })
+        loadAllCity()
 
-        })
+
+
     } catch (error) {
         console.log(error);
     }
 }
+
+// document.getElementById('usrform').addEventListener('submit', async(e) => {
+//     e.preventDefault()
+
+//     const name = document.getElementById('usrName').value
+//     const type = document.getElementById('usrComment').value
+
+//     try {
+//         const res = await axios.put('http://localhost:3001/cities/update', {
+//             name: name,
+//             type: type
+//         })
+//         console.log(res);
+
+
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+
+// })
+
+
+document.getElementById('edit').addEventListener('submit', async(e) => {
+    e.preventDefault()
+
+    const editName = document.getElementById('editname').value
+    const editEmail = document.getElementById('editemail').value
+
+    const userId = localStorage.getItem('userId')
+    try {
+        if (editName !== "" && editEmail !== "") {
+            const res = await axios.put('http://localhost:3001/user/edit', {
+                userId: userId,
+                name: editName,
+                email: editEmail
+            })
+            console.log(res);
+        }
+        if (editName !== "" && editEmail === "") {
+            const res = await axios.put('http://localhost:3001/user/edit', {
+                userId: userId,
+                name: editName
+            })
+            console.log(res);
+        }
+        if (editName === "" && editEmail !== "") {
+            const res = await axios.put('http://localhost:3001/user/edit', {
+                userId: userId,
+                email: editEmail
+            })
+            console.log(res);
+        }
+        document.getElementById('edit').reset()
+
+    } catch (error) {
+        console.log(error);
+    }
+
+})
+
+document.querySelector('.introsignup').addEventListener('click', () => {
+    document.querySelector('#signup-content').classList.remove('hidden')
+    document.querySelector('.introsignup').classList.add('hidden')
+    document.querySelector('#helper').classList.add('hidden')
+
+})
+
+document.querySelector(".intrologin").addEventListener('click', () => {
+    document.querySelector('#helper').classList.add('hidden')
+    document.querySelector('#login-content').classList.remove('hidden')
+
+})
+
+document.querySelector("#editusername").addEventListener('click', () => {
+    document.querySelector('#userprofile').classList.add('hidden')
+    document.querySelector('#citymood').classList.add('hidden')
+    document.querySelector('#edit-content').classList.remove('hidden')
+
+})
+
+document.querySelector("#backhome").addEventListener('click', () => {
+    document.querySelector('#edit-content').classList.add('hidden')
+    document.querySelector('#citymood').classList.remove('hidden')
+    document.querySelector('#userprofile').classList.remove('hidden')
+
+})

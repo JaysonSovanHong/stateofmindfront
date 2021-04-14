@@ -11,60 +11,78 @@
 </head>
 
 <body>
-    <!-- <!-- <div class="section">
+    <div id="helper" class="section">
 
-        <button>Sign Up</button>
-        <button>Login</button>
-
-        <!-- <video autoplay loop muted>
-        <source src="../My Movie.mp4">  -->
-
+        <button class="introsignup">Sign Up</button>
+        <button class="intrologin">Login</button>
 
     </div>
 
-    </video>
-    </div> --> -->
 
-    <div class="signup, hidden">
-        <h2>sign up</h2>
-        <section id="signup-content">
-            <form id="signup">
 
-                <label for="signup-name">Name</label>
-                <input type="text" id="name">
 
-                <label for="signup-email">Email</label>
-                <input type="text" id="email">
+    <section id="signup-content" class="hidden">
+        <form id="signup">
+            <p>
+                <label for="signup-name"></label>
+                <input type="text" id="name" placeholder="Username"><br>
+            </p>
+            <p>
+                <label for="signup-email"></label>
+                <input type="text" id="email" placeholder="Email"><br>
+            </p>
+            <p>
+                <label for="signup-password"></label>
+                <input type="password" id="password" placeholder="Password"><br>
+            </p>
+            <input id="buttoni" type="submit" value="Create">
+        </form>
 
-                <label for="signup-password">Password</label>
-                <input type="password" id="password">
 
-                <input type="submit" value="Sign Up!">
-            </form>
+    </section>
 
-        </section>
+    <section id="edit-content" class="hidden">
+        <form id="edit">
+            <p>
+                <label for="edit-name"></label>
+                <input type="text" id="editname" placeholder="Name">
+            </p>
+            <p>
+                <label for="edit-email"></label>
+                <input type="text" id="editemail" placeholder="Email">
+            </p>
 
-    </div>
+
+
+            <input id="editbutton" type="submit" value="edit">
+            <p>
+                <button id="backhome" value='Back to User'>Back to user</button></p>
+        </form>
+
+    </section>
+
 
 
     <section class="hidden" id="login-content">
         <form id="login-form">
-            <label for="login-email">Email</label>
-            <input type="text" id="login-email">
-
-            <label for="login-password">Password</label>
-            <input type="password" id="login-password">
-
-            <input type="submit" value="Log In!">
-            <button id="logOut">Log Out</button>
+            <p>
+                <label for="login-email"></label>
+                <input type="text" id="login-email" placeholder="Email">
+            </p>
+            <p>
+                <label for="login-password"></label>
+                <input type="password" id="login-password" placeholder="Password">
+            </p>
+            <!-- <input type="submit" value="Log In!"> -->
+            <button id="logOut1">Log In</button>
         </form>
     </section>
 
-    <div class="mood, hidden">
+    <div id="citymood" class="mood hidden">
         <form id="vacation-form">
-            <label for="vacation">type of vacation</label><br>
-            <input type="text" id="vacation" value="Beach"><br><br>
-            <input type="submit" value="Submit">
+            <p><label for="vacation">Where would you like to explore?</label></p>
+            <input type="text" id="vacation" placeholder="Destination"><br><br>
+            <input id="button3" type="submit" value="Submit">
         </form>
         <div id="city">
             <ul id="cityList"></ul>
@@ -74,18 +92,38 @@
         </div>
     </div>
 
-    <div class="user, hidden">
-        <h2>user page</h2>
-        <form action="/action_page.php" id="usrform">
-            Name: <input type="text" name="usrname">
-            <input type="submit">
-        </form>
+    <!-- <div class="create">
+        <section class="hidden" id="create-content">
+            <form action="/action_page.php" id="usrform">
+                Name: <input type="text" name="usrname" form="usrform" id="usrName">
+                <br>
+                <textarea rows="4" cols="50" name="comment" form="usrform" id="usrComment">
+              Enter text here...</textarea>
+                <input type="submit">
+            </form>
 
-        <textarea name="comment" form="usrform">Enter text here...</textarea>
-        <h2>list of save city</h2>
+    </div> -->
+
+
+
+    <div id="userprofile" class="user hidden">
+        <h2>Welcome User</h2>
+        <p> <input id="editusername" value="Edit User"></p>
+        <input id="logOut3" value="Log Out">
         <div id="user-city-list"></div>
+
+
+
+
+
     </div>
-    <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js "></script>
+
+
+    <video autoplay muted loop id="myVideo">
+        <source src="../Pexels Videos 4703.mp4" type="video/mp4">
+       </video>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script async defer src="./main.js"></script>
 
 
