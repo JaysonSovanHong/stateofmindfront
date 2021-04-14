@@ -262,7 +262,7 @@ document.getElementById('edit').addEventListener('submit', async(e) => {
             console.log(res);
         }
         document.getElementById('edit').reset()
-
+        alert('user updated')
     } catch (error) {
         console.log(error);
     }
