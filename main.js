@@ -50,6 +50,10 @@ document.querySelector('#signup').addEventListener('submit', async(event) => {
         // get the value of the email and password and save them, log them to see if your able to catch.
 
     try {
+
+
+
+
         const res = await axios.post('http://localhost:3001/user/signup', {
             // log the res and post it to the back end server 
             name: name,
@@ -68,6 +72,8 @@ document.querySelector('#signup').addEventListener('submit', async(event) => {
         document.getElementById('login-content').classList.remove('hidden')
             // document.querySelector('#helper').classList.add('hidden')
 
+
+
     } catch (error) {
         console.log(error)
         alert('email is already used.')
@@ -75,6 +81,10 @@ document.querySelector('#signup').addEventListener('submit', async(event) => {
     }
 })
 
+document.getElementById('homeButton').addEventListener('click', () => {
+    document.getElementById('signup').classList.add('hidden')
+    document.getElementById('helper').classList.remove('hidden')
+})
 
 document.querySelector('#login-form').addEventListener('submit', async(event) => {
     event.preventDefault()
